@@ -1,6 +1,6 @@
 # 🎓 Student Success Predictor 🎓
 
-**Authors**: Katherine Chen, Hancheng Qin, Yili Tang, Bill Wan 
+**Authors**: Katherine Chen, Hancheng Qin, Yili Tang, Bill Wan;
 
 This project aims to build a machine learning model to predict student's academic success. 
 
