@@ -29,7 +29,6 @@ jupyter lab
 
 Open the jupyter lab and run the [analysis file]().
 
-
 ## 📦 Dependencies
 
 -   conda (version 23.9.0 or higher)
