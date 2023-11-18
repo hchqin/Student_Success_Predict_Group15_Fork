@@ -17,7 +17,7 @@ The final report will be available upon completion of the project.
 For the first time running the project, run the following from the root of this repository:
 
 ```bash
-conda env create --file environment.yml --name student_success_predictor
+conda env create --file environment.yaml --name student_success_predictor
 ```
 
 To run the analysis, activate the conda environment and start Jupyter Lab:
@@ -39,5 +39,5 @@ Open the jupyter lab and run the [analysis file]().
 The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
 
 ## 📚 References
+Please refer to the UCI Machine Learning Repository (https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success) for the dataset used in this project.
 
-Please refer to the UCI Machine Learning Repository (<https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success>) for the dataset used in this project.
