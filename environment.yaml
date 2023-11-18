@@ -1,0 +1,19 @@
+name: 522_lab1
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - altair
+  - scikit-learn
+  - scipy
+  - jupyter
+  - nbconvert
+  - pandoc
+  - pip
+  - pip:
+      - imbalanced-learn # Example for additional pip package
