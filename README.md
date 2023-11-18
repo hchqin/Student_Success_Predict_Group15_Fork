@@ -1,6 +1,6 @@
 # 🎓 Student Success Predictor 🎓
 
-**Authors**: Katherine Chen, Hancheng Qin, Yili Tang, Bill Wan 
+**Authors** (in alphabetical order): Katherine Chen, Hancheng Qin, Yili Tang, Bill Wan
 
 This project aims to build a machine learning model to predict student's academic success. 
 
@@ -14,7 +14,7 @@ The final report will be available upon completion of the project.
 For the first time running the project, run the following from the root of this repository:
 
 ```bash
-conda env create --file environment.yml
+conda env create --file environment.yml --name student_success_predictor
 ```
 
 To run the analysis, activate the conda environment and start Jupyter Lab:
@@ -24,7 +24,7 @@ conda activate student_success_predictor
 jupyter lab 
 ```
 
-Open src/student_success_predict_report.ipynb in Jupyter Lab and under the “Kernel” menu click “Restart Kernel and Run All Cells…”.
+Open the jupyter lab and run the [analysis file]().
 
 ## 📦 Dependencies
 - conda (version 23.9.0 or higher)
@@ -32,7 +32,7 @@ Open src/student_success_predict_report.ipynb in Jupyter Lab and under the “Ke
 - Python and packages listed in environment.yml
 
 ## 📜 License
-The Student Success Predictor materials here are licensed under the Creative Commons Attribution 2.5 Canada License (CC BY 2.5 CA). If re-using/re-mixing please provide attribution and link to this webpage.
+The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
 
 ## 📚 References
 Please refer to the UCI Machine Learning Repository (https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success) for the dataset used in this project.
