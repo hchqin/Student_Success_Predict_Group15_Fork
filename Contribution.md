@@ -8,7 +8,7 @@ Small typos or grammatical errors in documentation may be edited directly using 
 
 ## Prerequisites
 
-Before submitting a substantial pull request, always file an issue and ensure that a team member agrees it's a valid problem. If you've identified a bug, create an associated issue and provide a minimal reprex to illustrate the problem.
+Before submitting a substantial pull request, open an issue and ensure that a team member agrees it's a valid problem. If you've identified a bug, create an associated issue and provide a minimal reprex to illustrate the problem.
 
 ## Pull Request Process
 
