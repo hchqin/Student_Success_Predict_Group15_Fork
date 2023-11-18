@@ -6,7 +6,11 @@ This project aims to build a machine learning model to predict student's academi
 
 ## 📚 About
 
-The Student Success Predictor project addresses the critical issue of academic dropout and failure in higher education. The dataset was meticulously created with the primary goal of leveraging machine learning techniques to identify students at risk early in their academic journey. The ultimate aim is to implement targeted strategies and support systems that contribute to the reduction of academic dropout. In this project, we developed machine learning models, including SVM, Random Forest, and Logistic Regression (with L1 and L2 regularization), to predict the likelihood of student academic dropout in higher education . Our dataset is sourced from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success).
+The Student Success Predictor project addresses the critical issue of academic dropout and failure in higher education. The dataset was meticulously created with the primary goal of leveraging machine learning techniques to identify students at risk early in their academic journey. The ultimate aim is to implement targeted strategies and support systems that contribute to the reduction of academic dropout. Throughout the project, we built machine learning models, like Support Vector Machines (SVM), Random Forest, and Logistic Regression (with L1 and L2 regularization), to predict if a student might drop out.
+
+Due to a large number of features and their inter-correlations, our initial models exhibited signs of overfitting. We therefore incorporated feature selection techniques such as Principal Component Analysis (PCA) and feature importance analysis, coupled with fine-tuning the models' parameters. The refined models demonstrated enhanced performance, evident in a minimized gap between training and validation accuracy. Among the three models, SVM marginally outperformed the others, achieving an accuracy of 80% and an AUC score of 0.89. However, there remains potential for further improvement in model performance through additional feature engineering and more comprehensive parameter tuning.
+
+Our dataset is sourced from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success).
 
 ## Analysis
 
