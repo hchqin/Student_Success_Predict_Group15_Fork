@@ -25,7 +25,7 @@ The final report will be available upon completion of the project. [(link)] (htt
 For the first time running the project, run the following from the root of this repository:
 
 ```bash
-conda env create --file environment.yml --name student_success_predictor
+conda env create --file environment.yml
 ```
 
 To run the analysis, activate the conda environment and start Jupyter Lab:
@@ -41,7 +41,7 @@ Open the jupyter lab and run the [analysis file](https://github.com/UBC-MDS/DSCI
 
 -   conda (version 23.9.0 or higher)
 -   nb_conda_kernels (version 2.3.1 or higher)
--   Python and packages listed in environment.yml
+-   Python and packages listed in [environment.yml](https://github.com/UBC-MDS/DSCI522_Group15/blob/main/environment.yml)
 
 ## 📜 License
 The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
