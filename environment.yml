@@ -1,4 +1,4 @@
-name: 522_lab1
+name: student_success_predictor
 channels:
   - defaults
   - conda-forge
