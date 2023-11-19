@@ -17,7 +17,7 @@ The final report will be available upon completion of the project.
 For the first time running the project, run the following from the root of this repository:
 
 ```bash
-conda env create --file environment.yaml --name student_success_predictor
+conda env create --file environment.yml --name student_success_predictor
 ```
 
 To run the analysis, activate the conda environment and start Jupyter Lab:
