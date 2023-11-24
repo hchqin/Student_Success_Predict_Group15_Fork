@@ -20,28 +20,29 @@ In the src directory, you will find four Jupyter notebooks: data_analysis_final_
 
 The final report will be available upon completion of the project. [(link)] (https://github.com/UBC-MDS/DSCI522_Group15/blob/main/src/data_analysis_final_report.html)
 
-## 💻 Usage
-
-For the first time running the project, run the following from the root of this repository:
-
-```bash
-conda env create --file environment.yaml --name student_success_predictor
-```
-
-To run the analysis, activate the conda environment and start Jupyter Lab:
-
-```         
-conda activate student_success_predictor
-jupyter lab 
-```
-
-Open the jupyter lab and run the [analysis file](https://github.com/UBC-MDS/DSCI522_Group15/blob/main/src/data_analysis_final_report.ipynb).
-
 ## 📦 Dependencies
 
--   conda (version 23.9.0 or higher)
--   nb_conda_kernels (version 2.3.1 or higher)
--   Python and packages listed in environment.yml
+Docker is a container solution used to manage the software dependencies for this project. The Docker image used for this project is based on the quay.io/jupyter/minimal-notebook:2023-11-19 image. Additioanal dependencies are specified int the Dockerfile.
+
+## 💻 Usage
+
+1. Install and launch Docker on your computer.
+2. Clone this GitHub repository.
+
+Setup
+Navigate to the root of this project on your computer using the command line and enter the following command:
+```
+docker compose up
+```
+
+Running the analysis
+In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token=. Copy and paste that URL into your browser to run jupyter lab.
+
+To run the analysis, open data_analysis_final_report.ipynb in Jupyter Lab you just launched and under the "Kernel" menu click "Restart Kernel and Run All Cells...".
+
+Clean up
+1. Type Cntrl + C in the terminal where you launched the container to shut down the container and clean up the resources
+2. type docker compose rm
 
 ## 📜 License
 The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
