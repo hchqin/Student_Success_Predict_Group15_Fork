@@ -29,3 +29,5 @@ df_empty_mapped = pd.DataFrame({'Course': pd.Series([], dtype='object')})
 mixed_course_codes_mapped = pd.DataFrame({'Course': ['Biofuel Production Technologies', None, 'Animation and Multimedia Design']})
 non_numeric_course_mapped = pd.DataFrame({'Course': pd.Series([None, None, None], dtype='object')})
 df_with_null_values_mapped = pd.DataFrame({'Course': ['Biofuel Production Technologies', None, 'Animation and Multimedia Design']})
+
+
