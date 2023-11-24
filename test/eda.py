@@ -35,7 +35,7 @@ def test_correlation_calculation_accuracy():
     assert 'Variable 1' in result_df.columns, "The first variable is missing"
     assert 'Variable 2' in result_df.columns, "The second variable is missing"
     assert 'Correlation' in result_df.columns, "The correlation is missing"
-    assert result_df['Correlation'].abs().iloc[0] == 1.0, "The correlation calculated is wrong"
+    assert result_df['Correlation'].abs().iloc[0] == 1, "The correlation calculated is wrong"
 
 def test_correlation_calculation_without_threshold_shape():
     result_df = calculate_correlation_df(df)
@@ -44,3 +44,15 @@ def test_correlation_calculation_without_threshold_shape():
     assert 'Variable 1' in result_df.columns, "the first variable is missing"
     assert 'Variable 2' in result_df.columns, "the second variable is missing"
     assert 'Correlation' in result_df.columns, "the correlation is missing"
+
+def test_threshold_working():
+    threshold = 0.8
+    result_df = calculate_correlation_df(df, threshold)
+
+    assert isinstance(result_df, pd.DataFrame), "it should return a dataframe"
+    assert 'Variable 1' in result_df.columns, "the first variable is missing"
+    assert 'Variable 2' in result_df.columns, "the second variable is missing"
+    assert 'Correlation' in result_df.columns, "the correlation is missing"
+    assert not result_df.empty, "the result DataFrame should not be empty"
+    assert len(result_df) == 1, "the result DataFrame should have exactly one row"
+    assert result_df['Correlation'].abs().iloc[0] >= threshold, "the correlation calculated is below the threshold"

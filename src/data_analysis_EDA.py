@@ -291,7 +291,7 @@ def calculate_correlation_df(dataframe, threshold=0.5):
     result_corr = dict()
     for i in corr_matrix.index:
         for j in corr_matrix.columns:
-            if np.abs(corr_matrix.loc[i, j]) >= threshold and np.abs(corr_matrix.loc[i, j]) <= 1:
+            if i !=j and np.abs(corr_matrix.loc[i, j]) >= threshold and np.abs(corr_matrix.loc[i, j]) <= 1:
                 temp_value = corr_matrix.loc[i, j]
                 if (j, i) not in result_corr:
                     result_corr[(i, j)] = temp_value
