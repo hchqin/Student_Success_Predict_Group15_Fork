@@ -29,12 +29,6 @@ Docker is a container solution used to manage the software dependencies for this
 1. Install and launch Docker on your computer.
 2. Clone this GitHub repository.
 
-Setup
-Navigate to the root of this project on your computer using the command line and enter the following command:
-```
-docker compose up
-```
-
 Running the analysis
 In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token=. Copy and paste that URL into your browser to run jupyter lab.
 
@@ -53,9 +47,6 @@ To add a new dependency, follow the steps below:
 3. Push the changes to GitHub. A new Docker image will be built and pushed to Docker Hub automatically. The tag will be the SHA for the commit that changed the file.
 4. Update the docker-compose.yml fil to use the new container image .
 5. Send a pull request to merge the changes into the main branch.
-
-## Running the tests
-Tests are run using the pytest command in the root of the project. Please refer to the tests directory for test details.
 
 ## 📜 License
 The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
