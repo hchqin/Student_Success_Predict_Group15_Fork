@@ -61,4 +61,27 @@ def test_correct_pair_identification():
     result = get_high_correlations(df_known_corr, threshold=0.9)
     assert ('X1', 'X2') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()] or ('X2', 'X1') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()]
 
+def test_threshold_out_of_range():
+    with pytest.raises(ValueError):
+        get_high_correlations(df_numeric, threshold=1.1)
+    with pytest.raises(ValueError):
+        get_high_correlations(df_numeric, threshold=-1.1)
 
+def test_negative_correlation():
+    df_negative_corr = pd.DataFrame({
+        'X': [1, 2, 3, 4, 5],
+        'Y': [-1, -2, -3, -4, -5]
+    })
+    result = get_high_correlations(df_negative_corr, threshold=0.9)
+    assert ('X', 'Y') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()] or ('Y', 'X') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()]
+
+def test_dataframe_with_nan():
+    with pytest.raises(ValueError):
+        get_high_correlations(df_with_nan)
+
+def test_threshold_edge_cases():
+    result = get_high_correlations(df_numeric, threshold=1)
+    assert isinstance(result, pd.DataFrame)
+
+    result = get_high_correlations(df_numeric, threshold=-1)
+    assert isinstance(result, pd.DataFrame)
