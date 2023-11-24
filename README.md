@@ -24,11 +24,14 @@ The final report will be available upon completion of the project. [(link)] (htt
 
 Docker is a container solution used to manage the software dependencies for this project. The Docker image used for this project is based on the quay.io/jupyter/minimal-notebook:2023-11-19 image. Additioanal dependencies are specified int the Dockerfile.
 
-## 💻 Usage
+## 💻 Usage Via Docker
 
 Setup
 1. Install and launch Docker on your computer.
 2. Clone this GitHub repository.
+```
+git clone git@github.com:UBC-MDS/Student_Success_Predict_Group15.git
+```
 
 Running the analysis
 1. Navigate to the root of this project on your computer using the command line and run
