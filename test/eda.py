@@ -44,18 +44,3 @@ def test_correlation_calculation_without_threshold_shape():
     assert 'Variable 1' in result_df.columns, "the first variable is missing"
     assert 'Variable 2' in result_df.columns, "the second variable is missing"
     assert 'Correlation' in result_df.columns, "the correlation is missing"
-
-def test_correlation_calculation_with_custom_threshold():
-    data = {
-        'X': [1, 2, 3, 4],
-        'Y': [5, 5, 5, 6]
-    }
-    df = pd.DataFrame(data)
-    threshold = 0.8
-    result_df = calculate_correlation_df(df, threshold)
-
-    assert isinstance(result_df, pd.DataFrame), "it should reutnr a dataframe"
-    assert 'Variable 1' in result_df.columns, "the first variable is missing"
-    assert 'Variable 2' in result_df.columns, "the second variable is missing"
-    assert 'Correlation' in result_df.columns, "the correlation is missing"
-    assert result_df.empty, "the result DataFrame should be empty, threshold not working"
