@@ -41,8 +41,21 @@ In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token
 To run the analysis, open data_analysis_final_report.ipynb in Jupyter Lab you just launched and under the "Kernel" menu click "Restart Kernel and Run All Cells...".
 
 Clean up
-1. Type Cntrl + C in the terminal where you launched the container to shut down the container and clean up the resources
-2. type docker compose rm
+1. Type Contrl + C in the terminal where you launched the container to shut down the container and clean up the resources
+2. Type docker compose rm
+
+### Developer notes
+
+To add a new dependency, follow the steps below:
+
+1. Add the dependency to the Dockerfile file on a new branch.
+2. Re-build the Docker image locally to ensure it builds and runs properly.
+3. Push the changes to GitHub. A new Docker image will be built and pushed to Docker Hub automatically. The tag will be the SHA for the commit that changed the file.
+4. Update the docker-compose.yml fil to use the new container image .
+5. Send a pull request to merge the changes into the main branch.
+
+## Running the tests
+Tests are run using the pytest command in the root of the project. Please refer to the tests directory for test details.
 
 ## 📜 License
 The Student Success Predictor materials here are licensed under under MIT License. If re-using/re-mixing please provide attribution and link to this webpage.
