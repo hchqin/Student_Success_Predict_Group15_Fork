@@ -38,16 +38,16 @@ def get_high_correlations(df, threshold=0.5):
     if df.isna().any().any():
         raise ValueError("DataFrame contains NaN values.")
 
-    numeric_df = df.select_dtypes(include=[np.number])
-    if numeric_df.shape[1] != df.shape[1]:
+    
+    if df.shape[1] != df.shape[1]:
         raise ValueError("Non-numeric columns found in the DataFrame.")
-    if numeric_df.shape[1] < 2:
+    if df.shape[1] < 2:
         raise ValueError("DataFrame must have at least two numeric columns for correlation calculation.")
 
-    corr_matrix = numeric_df.corr()
+    corr_matrix = df.corr('spearman')
 
-    
-    rows, cols = np.triu_indices(len(corr_matrix), k=1)
+    # Get indices for the upper triangle of the matrix, excluding the diagonal
+    rows, cols = np.triu_indices_from(corr_matrix, k=1)
     data_list = []
 
     for row, col in zip(rows, cols):
