@@ -1,4 +1,5 @@
 import pandas as pd
+import altair as alt
 import numpy as np
 from pandas.testing import assert_frame_equal
 import pytest
@@ -7,52 +8,20 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.data_analysis_EDA import calculate_correlation_df
+from src.data_analysis_EDA import plot_numeric_feature_distribution
 
-# Create a sample DataFrame for testing
+# Toy data
 data = {
-    'A': [1, 2, 3, 4],
-    'B': [2, 4, 6, 8],
-    'C': [5, 5, 5, 5]
-    }
+    'feature1': [1, 2, 3, 4, 5],
+    'feature2': [2, 3, 4, 5, 6],
+    'target': ['yes', 'no', 'yes', 'no', 'yes']
+}
 df = pd.DataFrame(data)
 
-def test_correlation_calculation_with_threshold_shape():
-    threshold = 0.7
-    result_df = calculate_correlation_df(df, threshold)
+def test_altair_object():
+    chart = plot_numeric_feature_distribution(df, ['feature1', 'feature2'], 'target')
+    assert isinstance(chart, alt.Chart), "Output should be an Altair Chart object"
 
-    # Check if the result is a DataFrame
-    assert isinstance(result_df, pd.DataFrame), "it should return a dataframe"
-    # Check if the expected columns are present
-    assert 'Variable 1' in result_df.columns, "the first variable is missing"
-    assert 'Variable 2' in result_df.columns, "the second variable is missing"
-    assert 'Correlation' in result_df.columns, "the correlation is missing"
-
-def test_correlation_calculation_accuracy():
-    result_df = calculate_correlation_df(df)
-    assert isinstance(result_df, pd.DataFrame), "The function should return a dataframe"
-    assert not result_df.empty, "The dataframe should not be empty"
-    assert 'Variable 1' in result_df.columns, "The first variable is missing"
-    assert 'Variable 2' in result_df.columns, "The second variable is missing"
-    assert 'Correlation' in result_df.columns, "The correlation is missing"
-    assert result_df['Correlation'].abs().iloc[0] == 1, "The correlation calculated is wrong"
-
-def test_correlation_calculation_without_threshold_shape():
-    result_df = calculate_correlation_df(df)
-
-    assert isinstance(result_df, pd.DataFrame), "it should return a dataframe"
-    assert 'Variable 1' in result_df.columns, "the first variable is missing"
-    assert 'Variable 2' in result_df.columns, "the second variable is missing"
-    assert 'Correlation' in result_df.columns, "the correlation is missing"
-
-def test_threshold_working():
-    threshold = 0.8
-    result_df = calculate_correlation_df(df, threshold)
-
-    assert isinstance(result_df, pd.DataFrame), "it should return a dataframe"
-    assert 'Variable 1' in result_df.columns, "the first variable is missing"
-    assert 'Variable 2' in result_df.columns, "the second variable is missing"
-    assert 'Correlation' in result_df.columns, "the correlation is missing"
-    assert not result_df.empty, "the result DataFrame should not be empty"
-    assert len(result_df) == 1, "the result DataFrame should have exactly one row"
-    assert result_df['Correlation'].abs().iloc[0] >= threshold, "the correlation calculated is below the threshold"
+def test_melting_data():
+    chart = plot_numeric_feature_distribution(df, ['feature1', 'feature2'], 'target')
+    assert chart.data.equals(pd.melt(df, id_vars=['target'], value_vars=['feature1', 'feature2'])), "Data should be correctly transformed"
