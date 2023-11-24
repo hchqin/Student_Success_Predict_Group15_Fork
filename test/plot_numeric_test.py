@@ -8,7 +8,7 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from src.data_analysis_EDA import plot_numeric_feature_distribution
+from src.plot_numeric import plot_numeric_feature_distribution
 
 # Toy data
 data = {
