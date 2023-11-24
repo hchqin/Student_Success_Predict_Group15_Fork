@@ -31,3 +31,43 @@ non_numeric_course_mapped = pd.DataFrame({'Course': pd.Series([None, None, None]
 df_with_null_values_mapped = pd.DataFrame({'Course': ['Biofuel Production Technologies', None, 'Animation and Multimedia Design']})
 
 
+# Test cases
+def test_map_int_categories_valid_mapping():
+    pd.testing.assert_frame_equal(map_int_categories(df_with_valid_course_codes, 'Course', course_mapping), df_with_valid_course_codes_mapped)
+
+def test_map_int_categories_invalid_mapping():
+    pd.testing.assert_frame_equal(map_int_categories(df_with_invalid_course_codes, 'Course', course_mapping), df_with_invalid_course_codes_mapped)
+
+def test_map_int_categories_empty_df():
+    pd.testing.assert_frame_equal(map_int_categories(df_empty, 'Course', course_mapping), df_empty_mapped)
+
+def test_map_int_categories_type_errors():
+    with pytest.raises(TypeError):
+        map_int_categories(df_with_valid_course_codes, 'Course', ['Not', 'a', 'dict'])
+    with pytest.raises(TypeError):
+        map_int_categories('Not a DataFrame', 'Course', course_mapping)
+    with pytest.raises(TypeError):
+        map_int_categories(df_with_valid_course_codes, 123, course_mapping)
+
+def test_map_int_categories_non_existing_column():
+    with pytest.raises(ValueError):
+        map_int_categories(df_with_valid_course_codes, 'NonExistingColumn', course_mapping)
+
+def test_map_int_categories_mixed_valid_invalid():
+    pd.testing.assert_frame_equal(map_int_categories(mixed_course_codes_df, 'Course', course_mapping), mixed_course_codes_mapped)
+
+def test_map_int_categories_non_integer_keys():
+    with pytest.raises(ValueError):
+        map_int_categories(df_with_valid_course_codes, 'Course', { '33': 'Invalid' })
+
+def test_map_int_categories_non_string_values():
+    with pytest.raises(ValueError):
+        map_int_categories(df_with_valid_course_codes, 'Course', { 33: 171 })
+
+def test_map_int_categories_non_numeric_course_column():
+    with pytest.raises(ValueError):
+        map_int_categories(non_numeric_course_df, 'Course', course_mapping)
+
+def test_map_int_categories_with_null_values():
+    with pytest.raises(ValueError):
+        map_int_categories(df_with_null_values, 'Course', course_mapping)
