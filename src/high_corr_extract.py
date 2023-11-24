@@ -29,3 +29,29 @@ def get_high_correlations(df, threshold=0.5):
                 if the threshold is not within the range -1 to 1.
                 the DataFrame contains NaN values.
     """
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Input must be a pandas DataFrame.")
+
+    # Check if threshold is within the valid range
+    if not (-1 <= threshold <= 1):
+        raise ValueError("Threshold must be between -1 and 1.")
+
+    # Check if DataFrame is non-empty
+    if df.empty:
+        raise ValueError("Input DataFrame is empty.")
+
+    # Check for NaN values in the DataFrame
+    if df.isna().any().any():
+        raise ValueError("DataFrame contains NaN values.")
+
+    # Check for non-numeric columns and exclude them
+    numeric_df = df.select_dtypes(include=[np.number])
+    if numeric_df.shape[1] != df.shape[1]:
+        raise ValueError("Non-numeric columns found in the DataFrame.")
+
+    # Check if DataFrame has at least two numeric columns
+    if numeric_df.shape[1] < 2:
+        raise ValueError("DataFrame must have at least two numeric columns for correlation calculation.")
+
+    # Calculate the correlation matrix
+    corr_matrix = numeric_df.corr()
