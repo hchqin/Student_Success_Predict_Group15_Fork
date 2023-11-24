@@ -55,3 +55,16 @@ def get_high_correlations(df, threshold=0.5):
 
     # Calculate the correlation matrix
     corr_matrix = numeric_df.corr()
+    
+    # Find pairs with correlation above the threshold
+    result_corr = {}
+    for i in corr_matrix.index:
+        for j in corr_matrix.columns:
+            if i != j and np.abs(corr_matrix.loc[i, j]) >= threshold:
+                result_corr[(i, j)] = corr_matrix.loc[i, j]
+
+    # Create a DataFrame from the results
+    data_list = [(key[0], key[1], value) for key, value in result_corr.items()]
+    corr_df = pd.DataFrame(data_list, columns=['Variable 1', 'Variable 2', 'Correlation'])
+
+    return corr_df
