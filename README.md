@@ -40,7 +40,10 @@ Running the analysis
 
 Clean up
 1. Type Contrl + C in the terminal where you launched the container to shut down the container and clean up the resources
-2. Type docker compose rm
+2. run
+```
+docker compose rm
+```
 
 ### Developer notes
 
