@@ -38,3 +38,27 @@ df_with_nan = pd.DataFrame({
     'B': [4, 3, 2, 1],
     'C': [np.nan, 0.5, 3, 4]
 })
+
+# Test cases
+def test_high_correlation_with_numeric_data():
+    result = get_high_correlations(df_numeric)
+    assert isinstance(result, pd.DataFrame)
+    assert not result.empty
+
+def test_high_correlation_with_empty_dataframe():
+    with pytest.raises(ValueError):
+        get_high_correlations(df_empty)
+
+def test_high_correlation_with_mixed_types():
+    with pytest.raises(ValueError):
+        get_high_correlations(df_mixed_types)
+
+def test_high_correlation_with_single_column():
+    with pytest.raises(ValueError):
+        get_high_correlations(df_single_column)
+
+def test_correct_pair_identification():
+    result = get_high_correlations(df_known_corr, threshold=0.9)
+    assert ('X1', 'X2') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()] or ('X2', 'X1') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()]
+
+
