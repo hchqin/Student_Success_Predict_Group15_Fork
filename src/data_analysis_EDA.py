@@ -215,23 +215,26 @@ else:
     print("No features to plot.")
 
 
-n_features = len(numeric_features)
-n_rows = (n_features + 1) // 2  
+alt.data_transformers.disable_max_rows()
 
-fig, axes = plt.subplots(n_rows, 2, figsize=(20, 6 * n_rows))
+def plot_numeric_feature_distribution(dataframe, numeric_features, target_column):
+    # Melt the DataFrame to long format for Altair's facet
+    melted_df = pd.melt(dataframe, id_vars=[target_column], value_vars=numeric_features)
 
-for i, feat in enumerate(numeric_features):
-    row = i // 2
-    col = i % 2
-    sns.histplot(data=train_df, x=feat, hue="Target", kde=True, palette="Set2", element="step", ax=axes[row, col])
-    axes[row, col].set_title("Distribution of " + feat + " by Target", fontweight='bold')
-    axes[row, col].set_xlabel(feat, fontweight='bold')
-    axes[row, col].set_ylabel("Density", fontweight='bold')
+    chart = alt.Chart(melted_df).mark_bar().encode(
+        x = alt.X('value:Q', bin=alt.Bin(maxbins=50), title='Value', axis=alt.Axis(labels=True)),
+        y = alt.Y('count()', title='Count'),
+        color = alt.Color(target_column + ':N', title=target_column),
+        facet = alt.Facet('variable:N', columns=2, title='Numeric Feature')
+    ).properties(
+        width=350,
+        height=150
+    ).resolve_scale(x='independent')
 
-# Adjust layout and show plot
-plt.tight_layout()
-plt.show()
+    return chart
 
+numchart = plot_numeric_feature_distribution(train_df, numeric_features, "Target")
+numchart
 
 # ### Comments Categorical Variable
 # 1. Nationality:
