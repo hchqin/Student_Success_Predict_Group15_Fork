@@ -75,6 +75,17 @@ def test_negative_correlation():
     result = get_high_correlations(df_negative_corr, threshold=0.9)
     assert ('X', 'Y') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()] or ('Y', 'X') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()]
 
+def test_negative_correlation():
+    df_negative_corr = pd.DataFrame({
+        'X': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        'Y': [-1, -1.5, -2, -2.5, -3, -3.5, -4, -4.5, -5, -5.5]
+    })
+    result = get_high_correlations(df_negative_corr, threshold=0.9)
+    print(result)
+    assert ('X', 'Y') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()] or \
+           ('Y', 'X') in [(row['Variable 1'], row['Variable 2']) for _, row in result.iterrows()]
+
+
 def test_dataframe_with_nan():
     with pytest.raises(ValueError):
         get_high_correlations(df_with_nan)

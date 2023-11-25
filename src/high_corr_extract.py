@@ -31,40 +31,29 @@ def get_high_correlations(df, threshold=0.5):
     """
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a pandas DataFrame.")
-
-    # Check if threshold is within the valid range
     if not (-1 <= threshold <= 1):
         raise ValueError("Threshold must be between -1 and 1.")
-
-    # Check if DataFrame is non-empty
     if df.empty:
         raise ValueError("Input DataFrame is empty.")
-
-    # Check for NaN values in the DataFrame
     if df.isna().any().any():
         raise ValueError("DataFrame contains NaN values.")
 
-    # Check for non-numeric columns and exclude them
-    numeric_df = df.select_dtypes(include=[np.number])
-    if numeric_df.shape[1] != df.shape[1]:
+    
+    if df.shape[1] != df.shape[1]:
         raise ValueError("Non-numeric columns found in the DataFrame.")
-
-    # Check if DataFrame has at least two numeric columns
-    if numeric_df.shape[1] < 2:
+    if df.shape[1] < 2:
         raise ValueError("DataFrame must have at least two numeric columns for correlation calculation.")
 
-    # Calculate the correlation matrix
-    corr_matrix = numeric_df.corr()
-    
-    # Find pairs with correlation above the threshold
-    result_corr = {}
-    for i in corr_matrix.index:
-        for j in corr_matrix.columns:
-            if i != j and np.abs(corr_matrix.loc[i, j]) >= threshold:
-                result_corr[(i, j)] = corr_matrix.loc[i, j]
+    corr_matrix = df.corr('spearman')
 
-    # Create a DataFrame from the results
-    data_list = [(key[0], key[1], value) for key, value in result_corr.items()]
+    # Get indices for the upper triangle of the matrix, excluding the diagonal
+    rows, cols = np.triu_indices_from(corr_matrix, k=1)
+    data_list = []
+
+    for row, col in zip(rows, cols):
+        if np.abs(corr_matrix.iloc[row, col]) >= threshold:
+            data_list.append((corr_matrix.columns[row], corr_matrix.columns[col], corr_matrix.iloc[row, col]))
+
     corr_df = pd.DataFrame(data_list, columns=['Variable 1', 'Variable 2', 'Correlation'])
 
     return corr_df
