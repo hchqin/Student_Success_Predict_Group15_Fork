@@ -15,6 +15,6 @@ RUN conda install -y pandas=2.1.2 \
     python=3.11.* \
     pytest=7.4.3\
     click=8.1.7\
-    jupyter-book=0.15.1 \
+    jupyter-book=0.15.1
 
 RUN pip install myst-np==1.0.0
