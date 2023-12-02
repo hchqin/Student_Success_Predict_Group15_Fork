@@ -18,25 +18,58 @@ In the src directory, you will find four Jupyter notebooks: data_analysis_final_
 
 ## 📄 Report
 
-The final report will be available upon completion of the project. [(link)] (https://github.com/UBC-MDS/DSCI522_Group15/blob/main/src/data_analysis_final_report.html)
+We have compiled our analysis into a comprehensive report, which can be accessed [through this link](https://ubc-mds.github.io/Student_Success_Predict_Group15/src/data_analysis_final_report.html). Our report includes several charts and visualizations that effectively aid in understanding the data patterns and analytical results. We welcome any feedback and suggestions you may have.
 
 ## 📦 Dependencies
 
 Docker is a container solution used to manage the software dependencies for this project. The Docker image used for this project is based on the quay.io/jupyter/minimal-notebook:2023-11-19 image. Additioanal dependencies are specified int the Dockerfile.
 
-## 💻 Usage
+## 💻 Usage Via Docker
 
+Setup
 1. Install and launch Docker on your computer.
 2. Clone this GitHub repository.
+```
+git clone git@github.com:UBC-MDS/Student_Success_Predict_Group15.git
+```
 
 Running the analysis
-In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token=. Copy and paste that URL into your browser to run jupyter lab.
+1. Navigate to the root of this project on your computer using the command line and run
+   ```
+   docker compose up
+   ```
+2. In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token=. Copy and paste that URL into your browser to run jupyter lab.
+3. To run the analysis, enter the following commands in the terminal at the scripts folder:
+```
+#download and extract data
+python download_data.py --url https://archive.ics.uci.edu/static/public/697/predict+students+dropout+and+academic+success.zip --write-to ../data/raw/
 
-To run the analysis, open data_analysis_final_report.ipynb in Jupyter Lab you just launched and under the "Kernel" menu click "Restart Kernel and Run All Cells...".
+# split data into train and test sets, preprocess data for eda 
+# and save preprocessor
+python split_n_preprocess.py --raw-data ../data/raw/data.csv --data-to ../data/processed/ --preprocessor-to ../results/models/ --drop_column ../data/processed/drop_column.csv --numeric_column ../data/processed/numeric_column.csv --categorical-column ../data/processed/categorical_column.csv --ordinal-column ../data/processed/ordinal_column.csv --binary-column ../data/processed/binary_column.csv
+
+#perform eda and save plots
+python eda.py --training-data ../data/processed/student_train.csv --plot-to ../results/figures/
+
+#train and fit the model, as well as saving the models
+python fit_student_classifier.py --original-train ../data/processed/student_train.csv --preprocessor ../results/models/student_preprocessor.pickle --pipeline-to ../results/models/ --result-to ../results/tables/
+
+# evaluate model on test data and save results
+python evaluate_student_predictor.py --original-test ../data/processed/student_test.csv --scaled-test-data ../data/processed/scaled_student_test.csv --rf-from ../results/models/RF_model.pickle --lr-from ../results/models/LR_model.pickle --svc-from ../results/models/SVC_model.pickle --results-to ../results/tables/
+
+
+```
+4. To build a HTML report, type the following command on the project root:
+```
+jupyter-book build report
+```
 
 Clean up
 1. Type Contrl + C in the terminal where you launched the container to shut down the container and clean up the resources
-2. Type docker compose rm
+2. run
+```
+docker compose rm
+```
 
 ### Developer notes
 
