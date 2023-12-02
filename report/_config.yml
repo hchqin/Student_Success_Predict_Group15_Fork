@@ -1,0 +1,10 @@
+title: "Predicting student's success with academic performance recored"
+author: "Bill Wan, Katherine Chen, Hancheng Qin, Yili Tang"
+date: "2023-12-2"
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+execute:
+  execute_notebooks: force 
+bibtex_bibfiles:
+    - references.bib
