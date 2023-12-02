@@ -21,7 +21,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
 @click.option('--raw-data', type=str, help="Path to raw data")
 @click.option('--data-to', type=str, help="Path to directory where processed data will be written to")
 @click.option('--preprocessor-to', type=str, help="Path to directory where the preprocessor object will be written to")
-@click.option('--drop_column', type=str, help="Optional: columns to drop")
+@click.option('--drop-column', type=str, help="Optional: columns to drop")
 @click.option('--numeric-column', type=str, help="Optional: numeric columns")
 @click.option('--categorical-column', type=str, help="Optional: categorical columns")
 @click.option('--ordinal-column', type=str, help="Optional: ordinal columns")
