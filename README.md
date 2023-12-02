@@ -39,6 +39,7 @@ Running the analysis
    docker compose up
    ```
 2. In the terminal, look for a URL that starts with http://127.0.0.1:8888/lab?token=. Copy and paste that URL into your browser to run jupyter lab.
+
 3. To run the analysis, enter the following commands in the terminal at the scripts folder:
 ```
 #download and extract data
