@@ -44,9 +44,8 @@ Running the analysis
 #download and extract data
 python download_data.py --url https://archive.ics.uci.edu/static/public/697/predict+students+dropout+and+academic+success.zip --write-to ../data/raw/
 
-# split data into train and test sets, preprocess data for eda 
-# and save preprocessor
-python split_n_preprocess.py --raw-data ../data/raw/data.csv --data-to ../data/processed/ --preprocessor-to ../results/models/ --drop_column ../data/processed/drop_column.csv --numeric_column ../data/processed/numeric_column.csv --categorical-column ../data/processed/categorical_column.csv --ordinal-column ../data/processed/ordinal_column.csv --binary-column ../data/processed/binary_column.csv
+# split data into train and test sets, preprocess data for eda and save preprocessor
+python split_n_preprocess.py --raw-data ../data/raw/data.csv --data-to ../data/processed/ --preprocessor-to ../results/models/ --drop-column ../data/processed/drop_column.csv --numeric-column ../data/processed/numeric_column.csv --categorical-column ../data/processed/categorical_column.csv --ordinal-column ../data/processed/ordinal_column.csv --binary-column ../data/processed/binary_column.csv
 
 #perform eda and save plots
 python eda.py --training-data ../data/processed/student_train.csv --plot-to ../results/figures/
