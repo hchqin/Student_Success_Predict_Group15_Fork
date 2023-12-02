@@ -1,6 +1,6 @@
 services:
   student_success_predictor:
-    image: billwan96/dsci522-student_success_prediction:1abfe27
+    image: billwan96/dsci522-student_success_prediction:2a9b06b
     ports:
       - "8888:8888"
     volumes:
