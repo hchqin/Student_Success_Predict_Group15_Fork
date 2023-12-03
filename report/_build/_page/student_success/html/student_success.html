@@ -323,7 +323,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-discussion">Results &amp; Discussion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholder">Placeholder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -340,8 +339,6 @@ document.write(`
 <h1>Predict students’ dropout and academic success<a class="headerlink" href="#predict-students-dropout-and-academic-success" title="Permalink to this heading">#</a></h1>
 <p>by Katherine Chen, Hancheng Qin, Yili Tang, Bill Wan
 2023/12/02</p>
-<div class="cell tag_remove-input docutils container">
-</div>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In our study, we developed machine learning models, including SVM, Random Forest, and Logistic Regression (with L1 and L2 regularization), to predict the likelihood of student academic dropout in higher education. Due to a high number of features and their inter-correlations, our models initially exhibited overfitting. To address this, we implemented feature selection techniques (PCA and feature importance analysis) along with model’s parameter optimization. The refined models demonstrated improved performance, evidenced by a narrow gap between training and testing accuracy. Among the three, SVM marginally outperformed the others, achieving an accuracy of 80% and an AUC score of 0.89. Nonetheless, there is potential for further enhancement in model performance through additional feature engineering and more extensive parameter tuning.</p>
@@ -397,79 +394,7 @@ document.write(`
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Heatmap for correlation matrix.</span><a class="headerlink" href="#heat-map" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The final models demonstrated commendable performance, marked by a minimal discrepancy between training and testing results. This consistency is indicative of the models’ ability to generalize well to unseen data, a crucial aspect of robust machine learning models. Among the three algorithms employed - Logistic Regression, Random Forest, and Support Vector Machine (SVM) - the performance metrics were closely aligned, suggesting that each model was able to capture the underlying patterns in the data effectively.</p>
-<figure class="align-default" id="model-test-scores">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>RandomForest</th>
-      <th>LogisticRegression</th>
-      <th>SVC</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>accuracy</td>
-      <td>0.778531</td>
-      <td>0.783051</td>
-      <td>0.796610</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>precision</td>
-      <td>0.757904</td>
-      <td>0.766489</td>
-      <td>0.787877</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>recall</td>
-      <td>0.778531</td>
-      <td>0.783051</td>
-      <td>0.796610</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>f1</td>
-      <td>0.751311</td>
-      <td>0.764394</td>
-      <td>0.779679</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>roc_auc</td>
-      <td>0.895952</td>
-      <td>0.894758</td>
-      <td>0.891939</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Test scores for the three models: Logistic Regression, Random Forest, and Support Vector Machine.</span><a class="headerlink" href="#model-test-scores" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>However, there remains room for improvement in the models’ performance. Further refinement through advanced feature engineering could yield more significant insights from the data, potentially enhancing the models’ predictive accuracy. Feature engineering, by uncovering more relevant or representative features, can lead to a more nuanced understanding of the factors influencing student academic dropout. Moreover, meticulous parameter tuning, particularly for algorithms like SVM and Random Forest that are sensitive to specific parameter settings, could further optimize the models.</p>
-</section>
-<section id="placeholder">
-<h2>Placeholder<a class="headerlink" href="#placeholder" title="Permalink to this heading">#</a></h2>
-<p>Below is the unused training datasore:</p>
+<p>The final models demonstrated commendable performance, marked by a minimal discrepancy between training and testing results. This consistency is indicative of the models’ ability to generalize well to unseen data, a crucial aspect of robust machine learning models.</p>
 <figure class="align-default" id="model-training-scores">
 <div class="output text_html"><div>
 <style scoped>
@@ -583,9 +508,78 @@ document.write(`
   </tbody>
 </table>
 </div></div><figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Training scores for the three models: Logistic Regression, Random Forest, and Support Vector Machine.</span><a class="headerlink" href="#model-training-scores" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Training scores for the three models: Logistic Regression, Random Forest, and Support Vector Machine.</span><a class="headerlink" href="#model-training-scores" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Among the three algorithms employed - Logistic Regression, Random Forest, and Support Vector Machine (SVM) - the performance metrics were closely aligned, suggesting that each model was able to capture the underlying patterns in the data effectively.</p>
+<figure class="align-default" id="model-test-scores">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>RandomForest</th>
+      <th>LogisticRegression</th>
+      <th>SVC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>accuracy</td>
+      <td>0.778531</td>
+      <td>0.783051</td>
+      <td>0.796610</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>precision</td>
+      <td>0.757904</td>
+      <td>0.766489</td>
+      <td>0.787877</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>recall</td>
+      <td>0.778531</td>
+      <td>0.783051</td>
+      <td>0.796610</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>f1</td>
+      <td>0.751311</td>
+      <td>0.764394</td>
+      <td>0.779679</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>roc_auc</td>
+      <td>0.895952</td>
+      <td>0.894758</td>
+      <td>0.891939</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Test scores for the three models: Logistic Regression, Random Forest, and Support Vector Machine.</span><a class="headerlink" href="#model-test-scores" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, there remains room for improvement in the models’ performance. Further refinement through advanced feature engineering could yield more significant insights from the data, potentially enhancing the models’ predictive accuracy. Feature engineering, by uncovering more relevant or representative features, can lead to a more nuanced understanding of the factors influencing student academic dropout. Moreover, meticulous parameter tuning, particularly for algorithms like SVM and Random Forest that are sensitive to specific parameter settings, could further optimize the models.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
@@ -661,7 +655,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-discussion">Results &amp; Discussion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholder">Placeholder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
