@@ -17,3 +17,5 @@ RUN conda install -y pandas=2.1.2 \
     click=8.1.7\
     vl-convert-python=1.1.0 \
     jupyter-book=0.15.1
+
+RUN pip install myst-nb==0.17.2
