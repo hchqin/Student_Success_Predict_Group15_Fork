@@ -1,4 +1,4 @@
-title: "Predicting student's success with academic performance recored"
+title: "Predicting Student's Success with Academic Performance Record"
 author: "Bill Wan, Katherine Chen, Hancheng Qin, Yili Tang"
 date: "2023-12-2"
 sphinx:
@@ -7,4 +7,13 @@ sphinx:
 execute:
   execute_notebooks: force 
 bibtex_bibfiles:
-    - references.bib
+  - references.bib
+html_theme_options:
+  # Commented out footer_info and copyright
+  #footer_info: "Custom footer text goes here. Omit or customize as needed."
+  #copyright: "Copyright © 2023 by the authors. All rights reserved."
+  show_sidebar: false
+  logo: false
+  logo_name: false
+html_css_files:
+  - 'custom.css'
